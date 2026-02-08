@@ -1,0 +1,62 @@
+[
+    {
+        "id": "doc_001",
+        "title": "Requisitos de Capital para Instituciones Financieras",
+        "category": "regulacion",
+        "content": "Las instituciones financieras deben mantener un ratio de capital mínimo del 8% de sus activos ponderados por riesgo, según los estándares de Basilea III. Este requisito incluye capital de nivel 1 (Tier 1) que debe ser al menos del 6%, compuesto principalmente por acciones ordinarias y reservas. El capital de nivel 2 (Tier 2) puede incluir instrumentos subordinados y reservas de revaluación. Las instituciones de importancia sistémica global deben mantener un colchón adicional de capital de entre 1% y 2.5%."
+    },
+    {
+        "id": "doc_002",
+        "title": "Políticas de Gestión de Riesgo de Liquidez",
+        "category": "politicas",
+        "content": "La gestión de riesgo de liquidez requiere que las instituciones mantengan activos líquidos de alta calidad suficientes para cubrir salidas netas de efectivo durante un período de estrés de 30 días. El Ratio de Cobertura de Liquidez (LCR) debe ser al menos del 100%. Los activos líquidos de alta calidad incluyen efectivo, reservas en bancos centrales, y valores gubernamentales. Las instituciones deben realizar pruebas de estrés de liquidez trimestralmente y mantener un plan de financiamiento de contingencia actualizado."
+    },
+    {
+        "id": "doc_003",
+        "title": "Normas de Prevención de Lavado de Dinero (AML)",
+        "category": "cumplimiento",
+        "content": "Todas las instituciones financieras deben implementar un programa integral de prevención de lavado de dinero que incluya: (1) Políticas y procedimientos escritos de debida diligencia del cliente (KYC), (2) Un oficial de cumplimiento designado, (3) Programas de capacitación continua para empleados, (4) Auditorías independientes anuales. Las transacciones sospechosas superiores a $10,000 dólares deben reportarse a las autoridades dentro de 30 días. Se requiere mantener registros de transacciones por un mínimo de 5 años."
+    },
+    {
+        "id": "doc_004",
+        "title": "Requisitos de Divulgación Financiera",
+        "category": "reportes",
+        "content": "Las instituciones financieras públicas deben presentar estados financieros trimestrales dentro de 45 días del cierre del período y estados anuales auditados dentro de 90 días del cierre del año fiscal. Los reportes deben incluir: balance general, estado de resultados, estado de flujos de efectivo, y notas explicativas. Se requiere divulgación de riesgos materiales, exposiciones significativas, y cambios en políticas contables. Los estados financieros deben prepararse según las Normas Internacionales de Información Financiera (NIIF)."
+    },
+    {
+        "id": "doc_005",
+        "title": "Límites de Concentración de Crédito",
+        "category": "regulacion",
+        "content": "Para mitigar el riesgo de concentración, las instituciones financieras no pueden otorgar créditos a un solo prestatario o grupo económico que excedan el 25% de su capital regulatorio. Para partes relacionadas, el límite se reduce al 15%. Las exposiciones que excedan el 10% del capital deben reportarse mensualmente al regulador. Se requiere aprobación especial del consejo de administración para exposiciones superiores al 20% del capital. Estas restricciones aplican a la suma de préstamos, garantías, y otros compromisos crediticios."
+    },
+    {
+        "id": "doc_006",
+        "title": "Protección de Datos del Cliente",
+        "category": "privacidad",
+        "content": "Las instituciones financieras deben proteger la información personal de los clientes mediante: (1) Cifrado de datos en tránsito y en reposo usando estándares AES-256, (2) Controles de acceso basados en roles, (3) Auditorías de seguridad semestrales, (4) Notificación de brechas de seguridad dentro de 72 horas. Los clientes tienen derecho a acceder, corregir y solicitar la eliminación de sus datos personales. La retención de datos no debe exceder el período necesario para cumplir con obligaciones legales y regulatorias."
+    },
+    {
+        "id": "doc_007",
+        "title": "Gobierno Corporativo y Composición del Consejo",
+        "category": "gobernanza",
+        "content": "El consejo de administración debe estar compuesto por al menos 5 miembros, con un mínimo de 3 consejeros independientes. El presidente del consejo no puede ser la misma persona que el director ejecutivo. Se requieren comités especializados para: auditoría, riesgos, y compensación. Los consejeros independientes deben constituir la mayoría en el comité de auditoría. Las reuniones del consejo deben realizarse al menos trimestralmente, con asistencia mínima del 75% de los miembros. Los consejeros deben tener experiencia relevante en finanzas, riesgos o industrias relacionadas."
+    },
+    {
+        "id": "doc_008",
+        "title": "Pruebas de Estrés de Capital",
+        "category": "evaluacion_riesgo",
+        "content": "Las instituciones financieras deben realizar pruebas de estrés de capital anualmente bajo escenarios adversos definidos por el regulador. Los escenarios deben incluir: recesión económica severa, aumento significativo en tasas de interés, y deterioro en mercados de activos. Las instituciones deben demostrar que mantendrían ratios de capital mínimos incluso bajo estos escenarios adversos. Los resultados deben presentarse al regulador y pueden resultar en restricciones a distribuciones de dividendos o requerimientos de capital adicional."
+    },
+    {
+        "id": "doc_009",
+        "title": "Valoración de Instrumentos Financieros",
+        "category": "contabilidad",
+        "content": "Los instrumentos financieros deben clasificarse en tres niveles según la jerarquía de valor razonable: Nivel 1 (precios cotizados en mercados activos), Nivel 2 (inputs observables distintos a precios cotizados), y Nivel 3 (inputs no observables). Los instrumentos de Nivel 3 requieren divulgación detallada de metodologías de valoración y supuestos clave. Las valoraciones deben actualizarse al menos trimestralmente, con validación independiente para posiciones materiales. Se requiere documentación de los modelos de valoración y pruebas de retroalimentación anuales."
+    },
+    {
+        "id": "doc_010",
+        "title": "Gestión de Riesgo Operacional",
+        "category": "riesgo_operacional",
+        "content": "Las instituciones deben mantener un marco de gestión de riesgo operacional que incluya: identificación, evaluación, monitoreo y mitigación de riesgos. Se requiere una base de datos de pérdidas operacionales que registre eventos con impacto superior a $10,000 dólares. El capital regulatorio para riesgo operacional debe calcularse usando el enfoque estándar o modelos avanzados aprobados. Las instituciones deben tener planes de continuidad de negocio probados anualmente y capacidad de recuperación ante desastres con tiempo de recuperación objetivo (RTO) no superior a 24 horas para funciones críticas."
+    }
+]
