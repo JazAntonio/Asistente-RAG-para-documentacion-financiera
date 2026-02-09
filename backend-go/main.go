@@ -17,7 +17,7 @@ func main() {
 	}
 
 	// Get configuration from environment
-	port := os.Getenv("GO_PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
@@ -36,7 +36,7 @@ func main() {
 	// Health check endpoint
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"status": "healthy",
+			"status":  "healthy",
 			"service": "backend-go",
 		})
 	})

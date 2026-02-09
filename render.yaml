@@ -45,8 +45,8 @@ services:
     envVars:
       - key: GO_ENV
         value: production
-      - key: GO_PORT
-        value: 8080
+      #- key: GO_PORT
+      #  value: 8080
       - key: RAG_SERVICE_URL
         fromService:
           type: web
