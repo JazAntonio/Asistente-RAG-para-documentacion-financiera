@@ -284,7 +284,7 @@ Este método usa el archivo `render.yaml` para desplegar ambos servicios backend
 2. Ve a [Render Dashboard](https://dashboard.render.com)
 3. Click en **"New"** → **"Blueprint"**
 4. Conecta tu repositorio de GitHub
-5. Render detectará automáticamente el archivo `render.yaml`
+5. Render detectará automáticamente el archivo `render.yaml`, de no ser el caso, rellena los campos manualmente
 6. **Configura las variables secretas** (las que tienen `sync: false`):
    - `PINECONE_API_KEY`: Tu API key de Pinecone
    - `OPENAI_API_KEY`: Tu API key de OpenAI
@@ -520,7 +520,7 @@ El sistema responde en el idioma de la pregunta. Puedes hacer preguntas en espa�
 
 1. **Mejores embeddings**: Usa `text-embedding-3-large` (más caro pero mejor)
 2. **Más contexto**: Aumenta `TOP_K` de 5 a 7-10
-3. **Modelo más potente**: Usa `gpt-4o` en vez de `gpt-3.5-turbo`
+3. **Modelo más potente**: Usa una versión posterio a `gpt-5-nano`
 4. **Chunks más grandes**: Aumenta `CHUNK_SIZE` de 1000 a 1500
 5. **Mejores documentos**: Asegúrate de que tus PDFs sean de calidad
 
