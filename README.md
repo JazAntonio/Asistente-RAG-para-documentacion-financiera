@@ -23,6 +23,7 @@ El sistema implementa una arquitectura de microservicios moderna y escalable:
 - ✅ Arquitectura desacoplada y escalable
 - ✅ Contenedorización con Docker
 - ✅ Búsqueda semántica con embeddings
+- ✅ Listo para producción (Vercel & Render)
 - ✅ Validación de entrada y manejo de errores
 
 ## 🚀 Inicio Rápido
@@ -63,6 +64,16 @@ El sistema implementa una arquitectura de microservicios moderna y escalable:
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8080
    - RAG Service: http://localhost:8000
+
+## 🌐 Despliegue en la Nube
+
+El sistema está optimizado para funcionar en entornos de producción modernos:
+
+- **Frontend**: Diseñado para **Vercel** con soporte nativo para Next.js.
+- **Backend (Go) & RAG Service (Python)**: Configurados para **Render** mediante Docker.
+- **Infraestructura**: Utiliza servicios gestionados de **Pinecone** (Vector DB) y **OpenAI** (Modelos de IA).
+
+Para más detalles, consulta la [**Guía de Despliegue**](DEPLOYMENT.md).
 
 ## 📚 Documentación
 
