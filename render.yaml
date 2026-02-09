@@ -1,0 +1,57 @@
+services:
+  # RAG Service (Python)
+  - type: web
+    name: financial-rag-service
+    runtime: docker
+    dockerfilePath: ./rag-service/Dockerfile
+    dockerContext: ./rag-service
+    plan: free
+    envVars:
+      - key: PYTHON_ENV
+        value: production
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_CLOUD
+        value: aws
+      - key: PINECONE_REGION
+        value: us-east-1
+      - key: PINECONE_INDEX_NAME
+        value: financial-docs
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5-nano
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: TOP_K
+        value: 5
+      - key: MAX_TOKENS
+        value: 1000
+      - key: TEMPERATURE
+        value: 1
+      - key: CHUNK_SIZE
+        value: 1000
+      - key: CHUNK_OVERLAP
+        value: 200
+    healthCheckPath: /health
+
+  # Backend API (Go)
+  - type: web
+    name: financial-rag-backend
+    runtime: docker
+    dockerfilePath: ./backend-go/Dockerfile
+    dockerContext: ./backend-go
+    plan: free
+    envVars:
+      - key: GO_ENV
+        value: production
+      - key: GO_PORT
+        value: 8080
+      - key: RAG_SERVICE_URL
+        fromService:
+          type: web
+          name: financial-rag-service
+          property: host
+      - key: ALLOWED_ORIGINS
+        sync: false
+    healthCheckPath: /health
