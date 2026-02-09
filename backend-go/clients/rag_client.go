@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -38,6 +39,11 @@ func NewRAGClient() *RAGClient {
 	baseURL := os.Getenv("RAG_SERVICE_URL")
 	if baseURL == "" {
 		baseURL = "http://localhost:8000"
+	}
+
+	// Validate URL format
+	if !strings.HasPrefix(baseURL, "http://") && !strings.HasPrefix(baseURL, "https://") {
+		baseURL = "http://" + baseURL
 	}
 
 	return &RAGClient{
