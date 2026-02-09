@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Frontend - Next.js Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+    depends_on:
+      - backend-go
+    networks:
+      - rag-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+  # Backend API - Go Service
+  backend-go:
+    build:
+      context: ./backend-go
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - GO_PORT=8080
+      - GO_ENV=development
+      - RAG_SERVICE_URL=http://rag-service:8000
+    depends_on:
+      - rag-service
+    networks:
+      - rag-network
+    volumes:
+      - ./backend-go:/app
+
+  # RAG Service - Python Microservice
+  rag-service:
+    build:
+      context: ./rag-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHON_PORT=8000
+      - PYTHON_ENV=development
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_CLOUD=${PINECONE_CLOUD}
+      - PINECONE_REGION=${PINECONE_REGION}
+      - PINECONE_INDEX_NAME=${PINECONE_INDEX_NAME}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL}
+      - TOP_K=${TOP_K:-5}
+      - MAX_TOKENS=${MAX_TOKENS:-500}
+      - TEMPERATURE=${TEMPERATURE:-0.7}
+    networks:
+      - rag-network
+    volumes:
+      - ./rag-service:/app
+
+networks:
+  rag-network:
+    driver: bridge

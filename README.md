@@ -1,195 +1,176 @@
 # Asistente RAG para Documentación Financiera
 
-## 1. Descripción general
+## 🎯 Descripción
 
-Este proyecto implementa un **asistente inteligente basado en Retrieval-Augmented Generation (RAG)** que permite consultar documentación financiera simulada mediante lenguaje natural. El sistema está diseñado como una solución técnica con una arquitectura moderna, desacoplada y orientada a producción.
+Sistema inteligente de consulta de documentación financiera basado en **Retrieval-Augmented Generation (RAG)** que permite realizar preguntas en lenguaje natural y obtener respuestas precisas fundamentadas en documentos indexados.
 
-El objetivo principal es:
+## 🏗️ Arquitectura
 
-- Diseñar una arquitectura de IA aplicada a consulta documental
-- Integrar modelos de lenguaje con bases de datos vectoriales
-- Implementar un flujo completo de ingestión, recuperación y generación
-- Garantizar mantenibilidad, escalabilidad y control de costos
+El sistema implementa una arquitectura de microservicios moderna y escalable:
 
----
+- **Frontend**: Next.js 14 con TypeScript y Tailwind CSS
+- **Backend API**: Go con framework Gin (API Gateway)
+- **Servicio RAG**: Python con FastAPI y LangChain
+- **Base de Datos Vectorial**: Pinecone
+- **Modelo de Lenguaje**: OpenAI (GPT-3.5-turbo / GPT-4)
 
-## 2. Funcionalidad principal
+## ✨ Características
 
-El sistema permite que un usuario:
+- ✅ Consultas en lenguaje natural
+- ✅ Respuestas contextualizadas basadas en documentos
+- ✅ Citación de fuentes utilizadas
+- ✅ Interfaz web moderna y responsiva
+- ✅ Arquitectura desacoplada y escalable
+- ✅ Contenedorización con Docker
+- ✅ Búsqueda semántica con embeddings
+- ✅ Validación de entrada y manejo de errores
 
-1. Ingrese una pregunta en lenguaje natural desde una interfaz web.
-2. El sistema recupere fragmentos relevantes de documentación financiera previamente indexada.
-3. Un modelo de lenguaje genere una respuesta fundamentada exclusivamente en dichos documentos.
-4. La respuesta sea presentada de forma clara en la interfaz.
+## 🚀 Inicio Rápido
 
-El asistente evita respuestas genéricas y se apoya explícitamente en el contexto recuperado, lo que mejora la precisión y la trazabilidad de las respuestas.
+### Prerequisitos
 
----
+- Docker y Docker Compose
+- API keys de Pinecone y OpenAI
+- Node.js 20+, Go 1.21+, Python 3.11+ (para desarrollo local)
 
-## 3. Arquitectura general
+### Configuración
 
-La solución sigue una arquitectura distribuida basada en servicios independientes:
+1. **Clonar el repositorio**
+   ```bash
+   git clone <repository-url>
+   cd Financial_RAG
+   ```
 
-- **Frontend**: Aplicación web en Next.js
-- **Backend API**: Servicio HTTP en Go
-- **Servicio de IA (RAG)**: Microservicio en Python
-- **Base de datos vectorial**: Pinecone
-- **Modelos de lenguaje**: APIs externas (OpenAI, Anthropic o equivalentes)
+2. **Configurar variables de entorno**
+   ```bash
+   cp .env.example .env
+   # Editar .env con tus API keys
+   ```
 
-Cada componente tiene responsabilidades bien definidas, lo que facilita el despliegue independiente, las pruebas y el mantenimiento.
+3. **Indexar documentos**
+   ```bash
+   cd scripts
+   pip install -r requirements.txt
+   python index_to_pinecone.py
+   ```
 
----
+4. **Iniciar servicios**
+   ```bash
+   docker-compose up --build
+   ```
 
-## 4. Estructura del repositorio
+5. **Acceder a la aplicación**
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8080
+   - RAG Service: http://localhost:8000
 
-El proyecto se organiza como un **monorepo**, con separación clara por dominio funcional:
+## 📚 Documentación
+
+- [**SETUP.md**](SETUP.md) - Guía detallada de instalación y configuración
+- [**DEPLOYMENT.md**](DEPLOYMENT.md) - Guía de despliegue a producción
+- [**diagrams/architecture.md**](diagrams/architecture.md) - Diagramas de arquitectura
+
+## 🗂️ Estructura del Proyecto
 
 ```
-rag-finance-assistant/
-│
-├── frontend/          # Aplicación Next.js
-├── backend-go/        # API Gateway en Go
-├── rag-service/       # Servicio RAG en Python
-├── datasets/          # Documentos sintéticos o públicos
-├── scripts/           # Scripts de ingesta y embeddings
-├── docker-compose.yml # Orquestación local
-├── README.md          # Documentación principal
-└── diagrams/          # Diagramas de arquitectura
+Financial_RAG/
+├── frontend/              # Aplicación Next.js
+│   ├── app/              # App Router de Next.js
+│   ├── lib/              # Utilidades y clientes API
+│   └── Dockerfile
+├── backend-go/           # API Gateway en Go
+│   ├── handlers/         # Manejadores de rutas
+│   ├── clients/          # Clientes HTTP
+│   ├── middleware/       # Middleware (CORS, etc.)
+│   └── Dockerfile
+├── rag-service/          # Servicio RAG en Python
+│   ├── services/         # Lógica de negocio
+│   ├── models/           # Modelos Pydantic
+│   ├── config.py         # Configuración
+│   └── Dockerfile
+├── datasets/             # Documentos de ejemplo
+├── scripts/              # Scripts de indexación
+├── diagrams/             # Diagramas de arquitectura
+└── docker-compose.yml    # Orquestación de servicios
 ```
 
-Esta estructura permite desarrollar y mantener todo el sistema desde un único repositorio y un solo IDE.
+## 🔐 Seguridad
+
+- ✅ Validación de entrada con límites de longitud
+- ✅ Variables de entorno para credenciales
+- ✅ CORS configurado para orígenes específicos
+- ✅ Contenedores con usuarios no-root
+- ✅ HTTPS requerido en producción
+- ✅ Sin exposición de API keys en el frontend
+
+## 🛠️ Tecnologías
+
+| Componente | Tecnología |
+|-----------|-----------|
+| Frontend | Next.js 14, TypeScript, Tailwind CSS |
+| Backend | Go 1.21, Gin Framework |
+| RAG Service | Python 3.11, FastAPI, LangChain |
+| Vector DB | Pinecone |
+| LLM | OpenAI (GPT-3.5-turbo) |
+| Embeddings | OpenAI (text-embedding-ada-002) |
+| Containerización | Docker, Docker Compose |
+| Deployment | Vercel (Frontend), Render (Backend) |
+
+## 📊 Flujo de Datos
+
+1. Usuario ingresa pregunta en la interfaz web
+2. Frontend envía consulta al Backend API (Go)
+3. Backend valida y reenvía al Servicio RAG (Python)
+4. RAG genera embedding de la consulta
+5. Búsqueda semántica en Pinecone
+6. Recuperación de documentos relevantes
+7. Construcción de prompt con contexto
+8. Generación de respuesta con LLM
+9. Retorno de respuesta con fuentes citadas
+
+## 🧪 Ejemplos de Consultas
+
+- "¿Cuáles son los requisitos de capital para instituciones financieras?"
+- "¿Qué políticas existen para la gestión de riesgo de liquidez?"
+- "¿Cuáles son las normas de prevención de lavado de dinero?"
+- "¿Qué requisitos hay para la divulgación financiera?"
+
+## 📈 Escalabilidad
+
+- Servicios independientes escalables horizontalmente
+- Caching de embeddings para reducir costos
+- Procesamiento asíncrono
+- Pool de conexiones HTTP
+
+## 🤝 Contribución
+
+Este proyecto es una implementación técnica de referencia. Para contribuir:
+
+1. Fork el repositorio
+2. Crea una rama para tu feature
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
+## 🔗 Enlaces Útiles
+
+- [Documentación de Pinecone](https://docs.pinecone.io/)
+- [OpenAI API Reference](https://platform.openai.com/docs/api-reference)
+- [LangChain Documentation](https://python.langchain.com/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Gin Framework](https://gin-gonic.com/)
+
+## 💡 Notas
+
+- El sistema utiliza documentación financiera sintética para demostración
+- Los costos de API (OpenAI y Pinecone) son responsabilidad del usuario
+- Se recomienda implementar rate limiting en producción
+- Considerar caching para consultas frecuentes
 
 ---
 
-## 5. Frontend (Next.js)
-
-El frontend está desarrollado en **Next.js** y se encarga exclusivamente de la interacción con el usuario.
-
-Responsabilidades:
-
-- Interfaz de consulta
-- Envío de preguntas al backend
-- Renderizado de respuestas
-
-Tecnologías clave:
-
-- Next.js (App Router)
-- Fetch API
-- Renderizado del lado del cliente
-
-El frontend no contiene lógica de IA ni credenciales sensibles.
-
----
-
-## 6. Backend API (Go)
-
-El backend es una **aplicación HTTP escrita en Go**, desplegada como contenedor Docker.
-
-Responsabilidades:
-
-- Exponer endpoints públicos (por ejemplo, `/query`)
-- Validar solicitudes y manejar errores
-- Gestionar CORS, timeouts y control básico de tráfico
-- Orquestar llamadas al servicio RAG
-
-Tecnologías clave:
-
-- Go (net/http o Gin)
-- Docker para empaquetado
-
-Go se utiliza por su rendimiento, manejo de concurrencia y estabilidad como capa de servicios.
-
----
-
-## 7. Servicio RAG (Python)
-
-El núcleo de la lógica de inteligencia artificial reside en un **microservicio independiente en Python**.
-
-Responsabilidades:
-
-- Generar embeddings de consultas
-- Consultar la base de datos vectorial
-- Construir prompts con contexto recuperado
-- Llamar a modelos de lenguaje
-- Retornar respuestas estructuradas
-
-Tecnologías clave:
-
-- Python 3.11
-- LangChain / Hugging Face
-- SDK de Pinecone
-- APIs de LLM
-
-Python se utiliza por su ecosistema dominante en IA y aprendizaje automático.
-
----
-
-## 8. Base de datos vectorial (Pinecone)
-
-Pinecone se utiliza como **almacén vectorial** para los embeddings de documentos.
-
-Características:
-
-- Servicio completamente gestionado
-- Búsqueda semántica eficiente
-- Uso de índices con metadatos
-
-Los documentos se fragmentan, se transforman en embeddings y se indexan para su posterior recuperación semántica.
-
----
-
-## 9. Dataset
-
-El proyecto utiliza documentación financiera **no sensible**, obtenida de dos formas:
-
-1. **Datos sintéticos**: Documentos ficticios generados con estructura y lenguaje técnico realista.
-2. **Datos públicos**: Documentación abierta de organismos financieros internacionales.
-
-Esto permite validar el pipeline completo de ingestión sin riesgos legales o de privacidad.
-
----
-
-## 10. Contenedores y desarrollo local
-
-Docker se utiliza para:
-
-- Definir entornos reproducibles
-- Ejecutar servicios de forma aislada
-- Alinear el entorno local con el entorno de despliegue
-
-Con `docker-compose` es posible levantar todo el sistema localmente para pruebas y desarrollo.
-
----
-
-## 11. Despliegue
-
-- **Frontend**: Vercel
-- **Backend Go**: Render (Docker)
-- **Servicio RAG**: Render (Docker)
-- **Vector DB y LLMs**: Servicios externos
-
-Las credenciales y configuraciones sensibles se gestionan mediante variables de entorno.
-
----
-
-## 12. Alcance del proyecto
-
-El sistema implementa un flujo RAG completo y funcional, enfocado en:
-
-- Consulta semántica de documentos
-- Integración robusta entre servicios
-- Buenas prácticas de arquitectura e infraestructura
-
-No está orientado a uso comercial directo, sino a servir como una implementación técnica clara, extensible y mantenible.
-
----
-
-## 13. Tecnologías resumidas
-
-- **Frontend**: Next.js
-- **Backend**: Go
-- **IA / RAG**: Python, LangChain
-- **Vector DB**: Pinecone
-- **Infraestructura**: Docker, Render, Vercel
-- **IDE recomendado**: VS Code
-
+**Desarrollado con ❤️ usando RAG, Next.js, Go y Python**
