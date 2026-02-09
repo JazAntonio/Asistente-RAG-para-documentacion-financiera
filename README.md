@@ -12,7 +12,7 @@ El sistema implementa una arquitectura de microservicios moderna y escalable:
 - **Backend API**: Go con framework Gin (API Gateway)
 - **Servicio RAG**: Python con FastAPI y LangChain
 - **Base de Datos Vectorial**: Pinecone
-- **Modelo de Lenguaje**: OpenAI (GPT-3.5-turbo / GPT-4)
+- **Modelo de Lenguaje**: OpenAI (GPT-5 Nano / GPT-4o)
 
 ## ✨ Características
 
@@ -111,8 +111,8 @@ Financial_RAG/
 | Backend | Go 1.21, Gin Framework |
 | RAG Service | Python 3.11, FastAPI, LangChain |
 | Vector DB | Pinecone |
-| LLM | OpenAI (GPT-3.5-turbo) |
-| Embeddings | OpenAI (text-embedding-ada-002) |
+| LLM | OpenAI (GPT-5 Nano) |
+| Embeddings | OpenAI (text-embedding-3-small) |
 | Containerización | Docker, Docker Compose |
 | Deployment | Vercel (Frontend), Render (Backend) |
 

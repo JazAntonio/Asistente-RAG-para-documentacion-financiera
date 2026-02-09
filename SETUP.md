@@ -46,13 +46,21 @@ Edit `.env` and add your API keys:
 ```bash
 # Pinecone Configuration
 PINECONE_API_KEY=your_actual_pinecone_api_key
-PINECONE_ENVIRONMENT=your_pinecone_environment
+PINECONE_CLOUD=aws
+PINECONE_REGION=us-east-1
 PINECONE_INDEX_NAME=financial-docs
 
 # OpenAI Configuration
 OPENAI_API_KEY=your_actual_openai_api_key
-OPENAI_MODEL=gpt-3.5-turbo
-OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+OPENAI_MODEL=gpt-5-nano
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+
+# RAG Configuration
+TOP_K=5
+MAX_TOKENS=1000
+TEMPERATURE=1  # GPT-5 Nano only supports temperature=1
+CHUNK_SIZE=1000
+CHUNK_OVERLAP=200
 
 # Service URLs (for local development)
 BACKEND_URL=http://localhost:8080
